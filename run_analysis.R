@@ -90,6 +90,6 @@ tidyData <- dcast(bys, Subject + Activity ~ variable, mean)
 
 head(tidyData)
 table(tidyData$Subject, tidyData$Activity)
-write.table(tidyData, "tidyData.txt")
+write.table(tidyData, "tidyData.txt", row.names=FALSE)
 
 
