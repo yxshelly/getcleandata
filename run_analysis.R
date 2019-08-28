@@ -23,14 +23,22 @@ str(features)
 
 # keep needed features: only mean and standard deviation
   # need to exclude "mean****", e.g. meanFreq, 
-featuresMS <- grep("(mean|std)\\", features[, "feaName"])
+featuresMS <- grep("(mean|std)\\(\\)", features[, "feaName"])
 featuresMS
 
 # restrict to list with only mean and std 
 measurements <- features[featuresMS, "feaName"]
 
 # rename feature names by getting rid of "()" after mean/std
-measurements <- gsub("[()]", "", featuresMeanStd)
+measurements <- gsub("[()]", "", measurements)
+measurements
+
+## rename vars to make them more descriptive
+measurements <- gsub("^t", "Time", measurements)
+measurements <- gsub("^f", "Freq", measurements)
+measurements <- gsub("Mag", "Magnitude", measurements)
+measurements <- gsub("mean", "Mean", measurements)
+measurements <- gsub("std", "Std", measurements)
 measurements
 
 ####### 2. Load train datasets ##########
@@ -49,7 +57,7 @@ trainSub <- read.table(file.path(path, "UCI HAR Dataset/train/subject_train.txt"
                        , col.names = c("Subject"))
 
 # combine the three datasets using column bind
-train <- cbind(trainSub, Code, train)
+train <- cbind(trainSub, trainCode, train)
 str(train)
 
 ###### 3. Load test datasets ###########
@@ -72,6 +80,7 @@ trainTest <- rbind(train, test)
 str(trainTest)
 
 ##========== Appropriately name the activity names ========#
+## change activity value labels
 table(trainTest$Activity)
 trainTest$Activity <- factor(trainTest$Activity, levels= c("1", "2", "3", "4", "5", "6"), 
                              labels = c("Walking", "Walking_Upstairs", "Walking_Downstairs",
@@ -83,13 +92,18 @@ head(trainTest)
 ##======== A tidy data for the average of each var for each activity of each subject =====##
 ## calculate the mean by activity and subject 
 
-##  Use "reshape2" function
+## Use "reshape2" function
 library(reshape2)
 bys <- melt(trainTest, id = c("Subject", "Activity"))
 tidyData <- dcast(bys, Subject + Activity ~ variable, mean)
 
 head(tidyData)
 table(tidyData$Subject, tidyData$Activity)
-write.table(tidyData, "tidyData.txt", row.names=FALSE)
+write.table(tidyData, "tidyData.txt", row.names = FALSE)
+
+## Use "ddply" function
+library(plyr)
+tidyData <- ddply(trainTest, c("Subject", "Activity"), colwise(mean))
+head(tidyData)
 
 
