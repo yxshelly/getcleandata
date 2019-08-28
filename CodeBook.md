@@ -13,23 +13,23 @@ For each record in the dataset it is provided:
 - Subject: an identifier of the subject who carried out the experiment. The total number of the subjects is 30.
 - Activity: the six activities, including WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING.
 - 66 measurements related to the mean and standard deviation, at the unit of per activity per subject. These features include:
--- tBodyAcc-XYZ
--- tGravityAcc-XYZ
--- tBodyAccJerk-XYZ
--- tBodyGyro-XYZ
--- tBodyGyroJerk-XYZ
--- tBodyAccMag
--- tGravityAccMag
--- tBodyAccJerkMag
--- tBodyGyroMag
--- tBodyGyroJerkMag
--- fBodyAcc-XYZ
--- fBodyAccJerk-XYZ
--- fBodyGyro-XYZ
--- fBodyAccMag
--- fBodyAccJerkMag
--- fBodyGyroMag
--- fBodyGyroJerkMag
+  - tBodyAcc-XYZ
+  - tGravityAcc-XYZ
+  - tBodyAccJerk-XYZ
+  - tBodyGyro-XYZ
+  - tBodyGyroJerk-XYZ
+  - tBodyAccMag
+  - tGravityAccMag
+  - tBodyAccJerkMag
+  - tBodyGyroMag
+  - tBodyGyroJerkMag
+  - fBodyAcc-XYZ
+  - fBodyAccJerk-XYZ
+  - fBodyGyro-XYZ
+  - fBodyAccMag
+  - fBodyAccJerkMag
+  - fBodyGyroMag
+  - fBodyGyroJerkMag
 - These measurements summarized the 1) triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration, 2) triaxial Angular velocity from the gyroscope and 3) a 561-feature vector with time and frequency domain variables. 
 
 ## Transformation
