@@ -10,14 +10,29 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 
 ### Variable Information
 For each record in the dataset it is provided: 
-- "Subject": an identifier of the subject who carried out the experiment, ranging from 1-30.
-- "Activity": its activity label (1-6), including WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING.
-- 66 measurements of mean and standard deviation, at the unit of per activity per subject. 
-  These measurements summarized the 1) triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration, 2) triaxial Angular velocity from the gyroscope and 3) a 561-feature vector with time and frequency domain variables. 
+- Subject: an identifier of the subject who carried out the experiment. The total number of the subjects is 30.
+- Activity: the six activities, including WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING.
+- 66 measurements related to the mean and standard deviation, at the unit of per activity per subject. These features include:
+-- tBodyAcc-XYZ
+-- tGravityAcc-XYZ
+-- tBodyAccJerk-XYZ
+-- tBodyGyro-XYZ
+-- tBodyGyroJerk-XYZ
+-- tBodyAccMag
+-- tGravityAccMag
+-- tBodyAccJerkMag
+-- tBodyGyroMag
+-- tBodyGyroJerkMag
+-- fBodyAcc-XYZ
+-- fBodyAccJerk-XYZ
+-- fBodyGyro-XYZ
+-- fBodyAccMag
+-- fBodyAccJerkMag
+-- fBodyGyroMag
+-- fBodyGyroJerkMag
+- These measurements summarized the 1) triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration, 2) triaxial Angular velocity from the gyroscope and 3) a 561-feature vector with time and frequency domain variables. 
 
-## README.md provides further details regarding the steps of instruction:
-- 1. Merge the training and the test sets to create one data set
-- 2. Extracts only the measurements on the mean and standard deviation for each measurement.
-- 3. Uses descriptive activity names to name the activities in the data set
-- 4. Appropriately labels the data set with descriptive variable names.
-- 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+## Transformation
+- The data was created by merging two raw datasets: train and test. 
+- The measurements only restricted to those related to mean and standard deviation (66 in total).
+- The new dataset was further cleaned by calculating the average value for each measurement, at each of the six activities per subject. 
