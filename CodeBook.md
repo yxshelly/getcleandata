@@ -8,11 +8,17 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
 
-### Variable Information
+### Variable Description
 For each record in the dataset it is provided: 
 - Subject: an identifier of the subject who carried out the experiment. The total number of the subjects is 30.
-- Activity: the six activities, including WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING.
-- 66 measurements related to the mean and standard deviation, at the unit of per activity per subject. These features include:
+- Activity: the six activities measured in the dataset, including 
+  - Walking
+  - Walking_Upstairs
+  - Walking_Downstairs
+  - Sitting
+  - Standing
+  - Laying
+- 66 feature measurements for each activity of each subject. The parameters of the measurements are restricted to either mean or standard deviation. These features are listed as following, with "t" standing for time, "f" standing for frequency, "Acc" standing for acceleration, "Mag" standing for magnitude. XYZ are the triaxial acceleration. 
   - tBodyAcc-XYZ
   - tGravityAcc-XYZ
   - tBodyAccJerk-XYZ
@@ -33,6 +39,6 @@ For each record in the dataset it is provided:
 - These measurements summarized the 1) triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration, 2) triaxial Angular velocity from the gyroscope and 3) a 561-feature vector with time and frequency domain variables. 
 
 ## Transformation
-- The data was created by merging two raw datasets: train and test. 
+- The data was created by merging two raw datasets from train and test. 
 - The measurements only restricted to those related to mean and standard deviation (66 in total).
-- The new dataset was further cleaned by calculating the average value for each measurement, at each of the six activities per subject. 
+- The new dataset was further cleaned by calculating the average value for each measurement, for each of the six activities per subject. 
